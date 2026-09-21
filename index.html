@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alto Rio Stays — Apartamentos para temporada no Rio de Janeiro</title>
+  <meta name="robots" content="noindex, nofollow"><!-- remover quando o domínio altoriostays.com.br estiver apontado -->
+  <meta name="description" content="Apartamentos selecionados em Copacabana, Ipanema e Leblon, com atendimento local. Reserve direto com a Alto Rio Stays.">
+  <link rel="icon" href="logos/favicon/favicon.ico">
+  <link rel="apple-touch-icon" href="logos/favicon/icone-180.png">
+  <meta property="og:title" content="Alto Rio Stays — Temporada no Rio de Janeiro">
+  <meta property="og:description" content="Apartamentos selecionados em Copacabana, Ipanema e Leblon. Reserve direto.">
+  <meta property="og:image" content="logos/redes/compartilhamento-1200x630.png">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --verde: #1A3829; --verde2: #1f4433; --ambar: #B8905A; --areia: #F4EFE5;
+      --grafite: #0E0E0E; --musgo: #8A9E8F; --branco: #FFFFFF;
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--grafite); background: var(--branco); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+
+    /* Logo em texto (mesmas proporções dos arquivos em /logos) */
+    .logo { display: flex; flex-direction: column; align-items: stretch; }
+    .logo-name { font-family: 'Cormorant Garamond', serif; font-weight: 500; text-transform: uppercase; letter-spacing: .18em; line-height: 1; margin-right: -.18em; }
+    .logo-rule { height: 1px; background: var(--ambar); }
+    .logo-sub { font-weight: 300; text-transform: uppercase; letter-spacing: .52em; margin-right: -.52em; color: var(--ambar); line-height: 1; text-align: center; }
+
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border-radius: 3px; font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; cursor: pointer; transition: all .2s; white-space: nowrap; border: 1.5px solid transparent; }
+    .btn-primary { background: var(--ambar); color: var(--branco); }
+    .btn-primary:hover { background: #c9a06a; }
+    .btn-outline { border-color: rgba(255,255,255,.4); color: var(--branco); }
+    .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,.08); }
+    .btn-line { border-color: var(--verde); color: var(--verde); }
+    .btn-line:hover { background: var(--verde); color: #fff; }
+    .btn-wa { background: #25D366; color: #fff; }
+    .btn-wa:hover { background: #1ebe5a; }
+    .eyebrow { font-size: 10px; font-weight: 600; letter-spacing: .3em; text-transform: uppercase; color: var(--ambar); }
+
+    /* NAV */
+    #nav { position: fixed; inset: 0 0 auto 0; z-index: 200; height: 64px; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; background: rgba(26,56,41,.97); backdrop-filter: blur(10px); transition: box-shadow .3s; }
+    #nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,.25); }
+    #nav .logo-name { font-size: 16px; color: #fff; }
+    #nav .logo-rule { margin: .32em 0 .3em; }
+    #nav .logo-sub { font-size: 6.5px; }
+    .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+    .nav-links a:not(.btn) { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.6); transition: color .2s; }
+    .nav-links a:not(.btn):hover { color: #fff; }
+    .nav-links .btn { padding: 10px 20px; font-size: 12px; }
+
+    /* HERO */
+    #hero { min-height: 100vh; background: var(--verde); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 110px 48px 96px; position: relative; overflow: hidden; }
+    #hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255,255,255,.06) 0%, transparent 70%); pointer-events: none; }
+    .hero-eyebrow { margin-bottom: 24px; position: relative; }
+    .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(46px, 7vw, 84px); font-weight: 400; color: #fff; line-height: 1.08; position: relative; }
+    .hero-title em { font-style: italic; color: rgba(255,255,255,.72); }
+    .hero-rule { width: 56px; height: 1px; background: var(--ambar); margin: 28px auto; position: relative; }
+    .hero-sub { font-size: clamp(15px, 2vw, 18px); color: rgba(255,255,255,.65); max-width: 520px; line-height: 1.7; margin-bottom: 40px; position: relative; }
+    .hero-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; position: relative; }
+    .hero-scroll { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; font-size: 9px; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.3); }
+    .hero-scroll i { width: 1px; height: 40px; background: linear-gradient(to bottom, rgba(255,255,255,.3), transparent); }
+
+    /* SEÇÕES */
+    .section { padding: 96px 48px; }
+    .inner { max-width: 1080px; margin: 0 auto; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 4vw, 46px); font-weight: 400; color: var(--verde); line-height: 1.15; margin-top: 10px; }
+    .section-title.light { color: #fff; }
+    .lead { font-size: 15px; color: #555; max-width: 560px; margin-top: 16px; }
+    .head { margin-bottom: 56px; }
+
+    /* SIMULADOR */
+    #investir { background: var(--areia); }
+    .sim { background: #fff; border: 1px solid rgba(26,56,41,.1); }
+    .sim-top { display: grid; grid-template-columns: 1fr 1.05fr; }
+    .sim-in { padding: 40px; border-right: 1px solid rgba(26,56,41,.1); }
+    .sim-out { padding: 40px; background: var(--verde); color: #fff; }
+    .fld { margin-bottom: 18px; }
+    .fld label { display: block; font-size: 10px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--musgo); margin-bottom: 6px; }
+    .fld input, .fld select { width: 100%; padding: 12px 14px; border: 1px solid rgba(26,56,41,.2); border-radius: 3px; font: inherit; font-size: 15px; color: var(--grafite); background: #fff; }
+    .fld input:focus, .fld select:focus { outline: 2px solid var(--ambar); outline-offset: -1px; }
+    .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .seg { display: flex; border: 1px solid rgba(26,56,41,.2); border-radius: 3px; overflow: hidden; }
+    .seg button { flex: 1; border: 0; background: #fff; padding: 12px 8px; font: inherit; font-size: 14px; cursor: pointer; color: var(--grafite); }
+    .seg button.on { background: var(--verde); color: #fff; }
+    .hint { font-size: 12px; color: #777; line-height: 1.5; }
+    .kpi { padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,.1); }
+    .kpi:last-of-type { border-bottom: 0; }
+    .kpi .n { font-family: 'Cormorant Garamond', serif; font-size: 40px; line-height: 1.05; color: #fff; }
+    .kpi .n.pos { color: #9fd3b2; } .kpi .n.neg { color: #e5a08d; }
+    .kpi .l { font-size: 12px; color: rgba(255,255,255,.55); margin-top: 2px; }
+    .sim-lock { position: relative; border-top: 1px solid rgba(26,56,41,.1); overflow: hidden; }
+    .teaser { position: absolute; inset: 0; padding: 40px; filter: blur(6px); opacity: .45; pointer-events: none; user-select: none; }
+    .teaser .bars { display: flex; align-items: flex-end; gap: 8px; height: 140px; }
+    .teaser .bars i { flex: 1; background: var(--ambar); border-radius: 2px 2px 0 0; }
+    .teaser p { margin-top: 16px; font-size: 14px; color: #555; }
+    .gate { position: relative; display: flex; justify-content: center; padding: 40px; background: linear-gradient(to bottom, rgba(255,255,255,.5), #fff 45%); }
+    .gate-box { max-width: 560px; width: 100%; }
+    .gate-box h3, .full h3 { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 30px; line-height: 1.15; color: var(--verde); margin: 8px 0 8px; }
+    .gate-box > p { font-size: 14px; color: #555; margin-bottom: 18px; }
+    .gate-box ul { list-style: none; display: flex; flex-wrap: wrap; gap: 6px 18px; margin-bottom: 18px; font-size: 13px; color: #444; }
+    .gate-box ul li::before { content: '✓ '; color: var(--ambar); font-weight: 700; }
+    .check { display: flex; gap: 10px; align-items: flex-start; font-size: 12px; color: #666; line-height: 1.5; margin: 4px 0 16px; }
+    .check input { width: auto; margin-top: 3px; }
+    .form-msg { font-size: 13px; margin-top: 12px; color: var(--verde); min-height: 18px; }
+    .hp { position: absolute; left: -9999px; }
+    .full { padding: 40px; border-top: 1px solid rgba(26,56,41,.1); }
+    .full[hidden], .sim-lock[hidden] { display: none; }
+    .band { background: var(--verde); color: #fff; padding: 8px 28px; margin: 22px 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .tbl { overflow-x: auto; margin: 8px 0 28px; }
+    .tbl table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 560px; }
+    .tbl th { background: var(--areia); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--musgo); padding: 12px; text-align: right; font-weight: 600; }
+    .tbl td { padding: 12px; border-bottom: 1px solid rgba(26,56,41,.08); text-align: right; vertical-align: top; }
+    .tbl th:first-child, .tbl td:first-child { text-align: left; }
+    .tbl td small { display: block; font-size: 11px; color: #888; }
+    .tbl .pos { color: #2D7A5A; font-weight: 600; } .tbl .neg { color: #C25E42; font-weight: 600; }
+    .tbl td.pct { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--ambar); font-weight: 500; }
+    .chart svg { width: 100%; height: auto; display: block; }
+    .chart-ctl { display: flex; gap: 14px; align-items: end; margin-bottom: 10px; flex-wrap: wrap; }
+    .chart-ctl .fld { margin: 0; min-width: 150px; }
+    .fine { font-size: 11px; color: #888; line-height: 1.6; margin-top: 22px; }
+
+    /* COMO FUNCIONA */
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; background: var(--areia); }
+    .step { background: #fff; padding: 40px 28px; display: flex; flex-direction: column; gap: 14px; }
+    .step .n { width: 40px; height: 40px; border-radius: 50%; background: var(--verde); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; }
+    .step b { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 22px; color: var(--verde); }
+    .step p { font-size: 13px; color: #666; line-height: 1.7; }
+
+    /* PROPRIETÁRIOS */
+    #proprietarios { background: var(--verde); color: #fff; }
+    #proprietarios .inner { display: grid; grid-template-columns: 1.1fr 1fr; gap: 72px; align-items: center; }
+    #proprietarios .lead { color: rgba(255,255,255,.6); }
+    .owner-list { list-style: none; display: grid; gap: 14px; margin: 28px 0 0; }
+    .owner-list li { font-size: 14px; color: rgba(255,255,255,.75); display: flex; gap: 12px; align-items: center; }
+    .owner-list li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--ambar); flex-shrink: 0; }
+    .owner-card { background: #fff; color: var(--grafite); padding: 40px; }
+    .owner-card h3 { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 28px; line-height: 1.2; color: var(--verde); margin: 8px 0 20px; }
+
+    /* RESERVAS (por último) */
+    #reservar { background: var(--areia); text-align: center; padding: 72px 48px; }
+    #reservar .inner { max-width: 560px; }
+    #reservar .lead { margin: 14px auto 28px; }
+
+    /* CONTATO + FOOTER */
+    #contato { text-align: center; background: #fff; }
+    .contato-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 36px; }
+    footer { background: var(--grafite); padding: 56px 48px; display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 32px; }
+    footer .logo { width: 150px; }
+    footer .logo-name { font-size: 16px; color: rgba(255,255,255,.7); }
+    footer .logo-rule { margin: .34em 0 .3em; background: rgba(184,144,90,.5); }
+    footer .logo-sub { font-size: 6.5px; }
+    footer p.tag { font-size: 12px; color: rgba(255,255,255,.35); margin-top: 16px; line-height: 1.6; max-width: 280px; }
+    footer h4 { font-size: 10px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.35); margin-bottom: 16px; }
+    footer ul { list-style: none; display: grid; gap: 10px; }
+    footer a { font-size: 13px; color: rgba(255,255,255,.55); transition: color .2s; }
+    footer a:hover { color: #fff; }
+    .foot-bottom { background: var(--grafite); border-top: 1px solid rgba(255,255,255,.06); padding: 20px 48px 28px; font-size: 11px; color: rgba(255,255,255,.25); }
+
+    .wa-float { position: fixed; right: 20px; bottom: 20px; z-index: 300; width: 54px; height: 54px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(0,0,0,.25); }
+    .wa-float svg { width: 28px; height: 28px; fill: #fff; }
+    [hidden] { display: none !important; }
+
+    @media (max-width: 900px) {
+      #nav { padding: 0 20px; }
+      .nav-links li:not(:last-child) { display: none; }
+      .section { padding: 72px 24px; }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .sim-top { grid-template-columns: 1fr; } .sim-in { border-right: 0; border-bottom: 1px solid rgba(26,56,41,.1); }
+      .band { grid-template-columns: 1fr; gap: 0; }
+      #reservar { padding: 64px 24px; }
+      #proprietarios .inner { grid-template-columns: 1fr; gap: 40px; }
+      footer { grid-template-columns: 1fr; padding: 48px 24px; }
+      .foot-bottom { padding: 20px 24px 28px; }
+    }
+    @media (max-width: 600px) {
+      #hero { padding: 100px 24px 80px; }
+      .steps { grid-template-columns: 1fr; }
+      .sim-in, .sim-out, .full, .gate { padding: 28px 22px; }
+      .teaser { padding: 28px 22px; }
+      .row2 { grid-template-columns: 1fr; }
+      .owner-card { padding: 28px 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="#hero" class="logo" aria-label="Alto Rio Stays">
+    <span class="logo-name">Alto Rio</span><span class="logo-rule"></span><span class="logo-sub">Stays</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#investir">Investir</a></li>
+    <li><a href="#como">Como funciona</a></li>
+    <li><a href="#proprietarios">Proprietários</a></li>
+    <li><a href="#contato">Contato</a></li>
+    <li><a href="#reservar">Reservas</a></li>
+    <li><a href="#investir" class="btn btn-primary">Simular viabilidade</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <div class="eyebrow hero-eyebrow">Consultoria e gestão de imóveis para temporada</div>
+  <h1 class="hero-title">Imóvel no Rio<br><em>como ativo de renda.</em></h1>
+  <div class="hero-rule"></div>
+  <p class="hero-sub">Da análise de viabilidade à gestão completa do apartamento, em Copacabana, Ipanema e Leblon. Você decide com número na mão.</p>
+  <div class="hero-btns">
+    <a href="#investir" class="btn btn-primary">Simular viabilidade</a>
+    <a href="#proprietarios" class="btn btn-outline">Já tenho um imóvel</a>
+  </div>
+  <div class="hero-scroll"><i></i><span>Role</span></div>
+</section>
+
+<!-- ── INVESTIDORES: simulador ─────────────────────────────── -->
+<section id="investir" class="section">
+  <div class="inner">
+    <div class="head">
+      <div class="eyebrow">Para investidores</div>
+      <h2 class="section-title">O imóvel se paga<br>na temporada?</h2>
+      <p class="lead">Simule o financiamento contra a renda de aluguel por temporada. É a mesma lógica dos estudos que fazemos para nossos clientes.</p>
+    </div>
+
+    <div class="sim">
+      <div class="sim-top">
+        <div class="sim-in">
+          <div class="fld"><label for="s-valor">Valor do imóvel (R$)</label><input type="number" id="s-valor" value="1800000" step="10000" min="0"></div>
+          <div class="fld"><label>Entrada</label>
+            <div class="seg" id="s-ent"><button data-v="0.2">20%</button><button data-v="0.3" class="on">30%</button><button data-v="0.4">40%</button></div>
+          </div>
+          <div class="row2">
+            <div class="fld"><label for="s-anos">Prazo (anos)</label><input type="number" id="s-anos" value="35" min="1" max="35"></div>
+            <div class="fld"><label for="s-taxa">Taxa (% a.a.)</label><input type="number" id="s-taxa" value="12" step="0.1" min="0"></div>
+          </div>
+          <div class="fld"><label for="s-renda">Renda líquida mensal esperada (R$)</label><input type="number" id="s-renda" value="16000" step="500" min="0">
+            <p class="hint" style="margin-top:8px">É o que sobra para o proprietário depois da taxa de gestão e da limpeza. Não sabe estimar? Peça a análise do imóvel abaixo.</p>
+          </div>
+        </div>
+        <div class="sim-out">
+          <div class="eyebrow">Resultado (financiamento SAC)</div>
+          <div class="kpi"><div class="n" id="o-entrada">–</div><div class="l">de entrada</div></div>
+          <div class="kpi"><div class="n" id="o-parcela">–</div><div class="l">1ª parcela mensal</div></div>
+          <div class="kpi"><div class="n" id="o-sobra">–</div><div class="l" id="o-sobra-l">renda menos parcela</div></div>
+          <div class="kpi"><div class="n" id="o-yield">–</div><div class="l">renda anual sobre o valor do imóvel</div></div>
+        </div>
+      </div>
+
+      <!-- Bloqueado até o cadastro -->
+      <div class="sim-lock" id="lock">
+        <div class="teaser" aria-hidden="true">
+          <div class="eyebrow">Análise completa</div>
+          <div class="bars"><i style="height:45%"></i><i style="height:55%"></i><i style="height:50%"></i><i style="height:100%"></i><i style="height:65%"></i><i style="height:100%"></i><i style="height:58%"></i><i style="height:52%"></i><i style="height:50%"></i><i style="height:38%"></i><i style="height:48%"></i><i style="height:47%"></i></div>
+          <p>Cenários de renda × entrada, sobra ou falta por mês e sazonalidade mês a mês.</p>
+        </div>
+        <div class="gate">
+          <form class="gate-box lead-form" data-tipo="investidor" novalidate>
+            <div class="eyebrow">Análise completa</div>
+            <h3>Veja o estudo inteiro do seu cenário</h3>
+            <p>Cadastre-se para liberar a análise completa. Um consultor da Alto Rio também pode conversar com você, sem compromisso.</p>
+            <ul><li>3 cenários de renda</li><li>Entrada de 20%, 30% e 40%</li><li>Sazonalidade mês a mês</li></ul>
+            <div class="row2">
+              <div class="fld"><label for="g-nome">Nome</label><input id="g-nome" name="nome" autocomplete="name" required></div>
+              <div class="fld"><label for="g-zap">WhatsApp (com DDD)</label><input id="g-zap" name="whatsapp" inputmode="tel" autocomplete="tel" required></div>
+            </div>
+            <div class="row2">
+              <div class="fld"><label for="g-mail">E-mail</label><input id="g-mail" name="email" type="email" autocomplete="email" required></div>
+              <div class="fld"><label for="g-perfil">Seu momento</label>
+                <select id="g-perfil" name="perfil"><option>Quero comprar um imóvel</option><option>Já tenho um imóvel</option><option>Estou pesquisando</option></select></div>
+            </div>
+            <input class="hp" name="site" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <label class="check"><input type="checkbox" name="lgpd" required> Concordo em receber contato da Alto Rio Stays sobre este estudo e com o uso dos meus dados para esse fim.</label>
+            <button type="submit" class="btn btn-primary">Liberar análise completa</button>
+            <p class="form-msg" role="status"></p>
+          </form>
+        </div>
+      </div>
+
+      <!-- Liberado -->
+      <div class="full" id="full" hidden>
+        <div class="eyebrow">Análise completa</div>
+        <h3>Cenários de renda e entrada</h3>
+        <div class="band" id="f-kpis"></div>
+        <div class="tbl"><table id="f-tabela"></table></div>
+        <h3>Sazonalidade: renda mês a mês contra a parcela</h3>
+        <div class="chart-ctl"><div class="fld"><label for="f-ent">Entrada</label><select id="f-ent"><option value="0.2">20%</option><option value="0.3" selected>30%</option><option value="0.4">40%</option></select></div></div>
+        <div class="chart" id="f-chart"></div>
+        <p class="hint" style="margin-top:6px">Barras: renda líquida do mês. Linha tracejada: 1ª parcela. A sazonalidade segue o padrão médio de unidades Alto Rio em Copacabana (set/25–ago/26), aplicado sobre a sua renda esperada.</p>
+        <div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap">
+          <a href="#" class="btn btn-primary" data-wa="Olá! Fiz a simulação no site da Alto Rio Stays e quero conversar sobre a viabilidade de um imóvel.">Conversar com um consultor</a>
+          <a href="mailto:contato@altoriostays.com.br?subject=Estudo%20de%20viabilidade" class="btn btn-line">Enviar por e-mail</a>
+        </div>
+        <p class="fine">Simulação ilustrativa, sem valor de proposta. A renda líquida considera a taxa de gestão e a limpeza, e não inclui condomínio, IPTU, energia e internet. Não inclui ITBI, escritura e registro, avaliação bancária, seguros e tarifas do financiamento, que costumam somar de 4% a 6% do valor do imóvel. A taxa é tratada como efetiva anual. A renda de unidades de um bairro não garante o resultado de um imóvel em outro. Condições reais dependem do banco e da análise de crédito.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── COMO FUNCIONA (flywheel) ───────────────────────────── -->
+<section id="como" class="section">
+  <div class="inner">
+    <div class="head">
+      <div class="eyebrow">Como funciona</div>
+      <h2 class="section-title">Da tese de investimento<br>à operação diária.</h2>
+      <p class="lead">Acompanhamos o imóvel em todas as etapas, e os resultados dos nossos clientes alimentam as próximas decisões.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><span class="n">01</span><b>Consultoria e viabilidade</b><p>Estudo de renda, financiamento e retorno, com premissas claras, antes de qualquer compromisso.</p></div>
+      <div class="step"><span class="n">02</span><b>Escolha e aquisição</b><p>Apoio na busca, na negociação e na avaliação do imóvel com potencial para temporada.</p></div>
+      <div class="step"><span class="n">03</span><b>Preparação e gestão</b><p>Enxoval, fotos, anúncios, precificação dinâmica, atendimento aos hóspedes, limpeza e manutenção.</p></div>
+      <div class="step"><span class="n">04</span><b>Resultado transparente</b><p>Repasse mensal com relatório detalhado, para você acompanhar renda e ocupação.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROPRIETÁRIOS ──────────────────────────────────────── -->
+<section id="proprietarios" class="section">
+  <div class="inner">
+    <div>
+      <div class="eyebrow">Para proprietários</div>
+      <h2 class="section-title light">Tem um imóvel no Rio?<br>Deixe a gestão com a gente.</h2>
+      <p class="lead">Você continua dono. A gente cuida da operação inteira, para o imóvel render mais e dar menos trabalho.</p>
+      <ul class="owner-list">
+        <li>Precificação dinâmica e anúncios otimizados em todas as plataformas</li>
+        <li>Atendimento aos hóspedes, limpeza e manutenção</li>
+        <li>Repasse mensal com relatório detalhado</li>
+      </ul>
+    </div>
+    <form class="owner-card lead-form" data-tipo="proprietario" novalidate>
+      <div class="eyebrow">Sem compromisso</div>
+      <h3>Análise gratuita do seu imóvel</h3>
+      <div class="fld"><label for="p-nome">Nome</label><input id="p-nome" name="nome" autocomplete="name" required></div>
+      <div class="fld"><label for="p-zap">WhatsApp (com DDD)</label><input id="p-zap" name="whatsapp" inputmode="tel" autocomplete="tel" required></div>
+      <div class="fld"><label for="p-imovel">Bairro e número de quartos</label><input id="p-imovel" name="imovel" placeholder="Ex.: Copacabana, 2 quartos"></div>
+      <input class="hp" name="site" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <label class="check"><input type="checkbox" name="lgpd" required> Concordo em receber contato da Alto Rio Stays sobre o meu imóvel.</label>
+      <button type="submit" class="btn btn-primary">Quero minha análise</button>
+      <p class="form-msg" role="status"></p>
+    </form>
+  </div>
+</section>
+
+<!-- ── CONTATO ────────────────────────────────────────────── -->
+<section id="contato" class="section">
+  <div class="inner">
+    <div class="eyebrow">Contato</div>
+    <h2 class="section-title">Vamos conversar sobre o seu imóvel?</h2>
+    <p class="lead" style="margin:16px auto 0">Investidor ou proprietário, escreva para a gente. Respondemos rápido.</p>
+    <div class="contato-btns">
+      <a href="#" class="btn btn-wa" data-wa="Olá! Vim pelo site da Alto Rio Stays." hidden>Falar no WhatsApp</a>
+      <a href="mailto:contato@altoriostays.com.br" class="btn btn-line">contato@altoriostays.com.br</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── RESERVAS (sempre por último) ───────────────────────── -->
+<section id="reservar" class="section">
+  <div class="inner">
+    <div class="eyebrow">Para hóspedes</div>
+    <h2 class="section-title">Quer se hospedar<br>em um dos nossos apartamentos?</h2>
+    <p class="lead">Copacabana, Ipanema e Leblon. Veja a disponibilidade e reserve direto.</p>
+    <a href="#" class="btn btn-dark" data-reservas>Ver disponibilidade e reservar</a>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <div class="logo"><span class="logo-name">Alto Rio</span><span class="logo-rule"></span><span class="logo-sub">Stays</span></div>
+    <p class="tag">Consultoria e gestão de imóveis para temporada em Copacabana, Ipanema e Leblon. Rio de Janeiro.</p>
+  </div>
+  <div>
+    <h4>Navegação</h4>
+    <ul>
+      <li><a href="#investir">Investir</a></li>
+      <li><a href="#como">Como funciona</a></li>
+      <li><a href="#proprietarios">Proprietários</a></li>
+      <li><a href="#" data-reservas>Reservas</a></li>
+    </ul>
+  </div>
+  <div>
+    <h4>Contato</h4>
+    <ul>
+      <li><a href="mailto:contato@altoriostays.com.br">contato@altoriostays.com.br</a></li>
+      <li><a href="https://instagram.com/altoriostays" rel="noopener">@altoriostays</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="foot-bottom">© 2026 Alto Rio Stays. Todos os direitos reservados.</div>
+
+<a class="wa-float" data-wa="Olá! Vim pelo site da Alto Rio Stays." aria-label="WhatsApp" hidden>
+  <svg viewBox="0 0 24 24"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35M12.05 21.79a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.89 9.89-9.89 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 7c0 5.45-4.44 9.89-9.89 9.89m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.17-3.48-8.42z"/></svg>
+</a>
+
+<script>
+  // ── CONFIGURAÇÃO ─────────────────────────────────────────────
+  // Página de reservas no Stays. Trocar por https://reservas.altoriostays.com.br quando o Stays liberar.
+  const RESERVAS_URL = 'https://www.iconystay.com.br/pt/search';
+  // WhatsApp com DDI+DDD+número, sem símbolos (ex.: '5521912345678'). Vazio = botões de WhatsApp ficam ocultos.
+  const WHATSAPP = '';
+  // Cadastros caem direto no Gmail do contato@ via FormSubmit (serviço gratuito de formulário → e-mail).
+  // Trocar por um endereço do hub quando o CRM de leads existir. Vazio = abre um e-mail pronto.
+  const LEADS_ENDPOINT = 'https://formsubmit.co/ajax/contato@altoriostays.com.br';
+  const EMAIL = 'contato@altoriostays.com.br';
+  // ─────────────────────────────────────────────────────────────
+
+  const $ = id => document.getElementById(id);
+  const brl = n => n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 });
+  const pc = n => n.toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + '%';
+  const seguro = fn => { try { return fn(); } catch (e) { return null; } };
+
+  document.querySelectorAll('[data-reservas]').forEach(a => { a.href = RESERVAS_URL; });
+  if (WHATSAPP) {
+    document.querySelectorAll('[data-wa]').forEach(a => {
+      a.href = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(a.dataset.wa)}`;
+      a.hidden = false;
+    });
+  } else {
+    document.querySelectorAll('.full [data-wa]').forEach(a => {
+      a.href = `mailto:${EMAIL}?subject=${encodeURIComponent('Estudo de viabilidade')}&body=${encodeURIComponent(a.dataset.wa)}`;
+    });
+  }
+  const nav = $('nav');
+  addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 40));
+
+  // ── SIMULADOR ────────────────────────────────────────────────
+  const ENTRADAS = [0.2, 0.3, 0.4];
+  // Renda líquida mensal (set/25 a ago/26), média de unidades Alto Rio em Copacabana. Usada só como formato da sazonalidade.
+  const SAZ = [12052, 12521, 12498, 29704, 18151, 30127, 15216, 14553, 14071, 10245, 13047, 12810];
+  const SAZ_MEDIA = SAZ.reduce((a, b) => a + b, 0) / 12;
+  const MESES = ['Set', 'Out', 'Nov', 'Dez', 'Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago'];
+  let entrada = 0.3, liberado = !!seguro(() => localStorage.getItem('ars_lead'));
+
+  function sac(valor, ent, anos, taxaAA) {
+    const fin = valor * (1 - ent), n = anos * 12, i = Math.pow(1 + taxaAA / 100, 1 / 12) - 1, am = fin / n;
+    return { entrada: valor * ent, primeira: am + fin * i, ultima: am + am * i };
+  }
+  const lerSim = () => ({
+    valor: Math.max(+$('s-valor').value || 0, 0), anos: Math.min(Math.max(+$('s-anos').value || 1, 1), 35),
+    taxa: Math.max(+$('s-taxa').value || 0, 0), renda: Math.max(+$('s-renda').value || 0, 0),
+  });
+
+  function render() {
+    const s = lerSim(), r = sac(s.valor, entrada, s.anos, s.taxa), sobra = s.renda - r.primeira;
+    $('o-entrada').textContent = brl(r.entrada);
+    $('o-parcela').textContent = brl(r.primeira);
+    const el = $('o-sobra'); el.textContent = brl(Math.abs(sobra));
+    el.className = 'n ' + (sobra >= 0 ? 'pos' : 'neg');
+    $('o-sobra-l').textContent = sobra >= 0 ? 'sobra por mês depois da parcela' : 'falta por mês para cobrir a parcela';
+    $('o-yield').textContent = s.valor ? pc(s.renda * 12 / s.valor * 100) : '–';
+    if (liberado) renderCompleto(s);
+  }
+
+  function renderCompleto(s) {
+    const cen = [['Cenário −20%', 0.8], ['Sua estimativa', 1], ['Cenário +20%', 1.2]];
+    const liq = s.renda, anual = liq * 12;
+    $('f-kpis').innerHTML = [
+      [brl(liq), 'renda líquida por mês (sua estimativa)'], [brl(anual), 'renda líquida por ano'],
+      [s.valor ? pc(anual * 0.8 / s.valor * 100) + ' a ' + pc(anual * 1.2 / s.valor * 100) : '–', 'renda anual sobre o valor, nos cenários −20% a +20%'],
+    ].map(([n, l]) => `<div class="kpi"><div class="n">${n}</div><div class="l">${l}</div></div>`).join('');
+    let h = `<tr><th>Entrada</th>${cen.map(c => `<th>${c[0]}<br>${brl(liq * c[1])}/mês</th>`).join('')}</tr>`;
+    ENTRADAS.forEach(e => {
+      const r = sac(s.valor, e, s.anos, s.taxa);
+      h += `<tr><td class="pct">${e * 100}%<small>entrada ${brl(r.entrada)}<br>1ª parcela ${brl(r.primeira)}</small></td>` +
+        cen.map(c => { const f = liq * c[1] - r.primeira; return `<td class="${f >= 0 ? 'pos' : 'neg'}">${f >= 0 ? 'Sobra' : 'Falta'} ${brl(Math.abs(f))}<small>por mês</small></td>`; }).join('') + '</tr>';
+    });
+    $('f-tabela').innerHTML = h;
+    desenhar(s, +$('f-ent').value);
+  }
+
+  function desenhar(s, ent) {
+    const parcela = sac(s.valor, ent, s.anos, s.taxa).primeira, fator = s.renda / SAZ_MEDIA, dados = SAZ.map(x => x * fator);
+    const W = 760, H = 300, L = 56, R = 12, T = 16, B = 32, max = Math.max(...dados, parcela, 1) * 1.12, bw = (W - L - R) / 12;
+    const y = v => T + (H - T - B) * (1 - Math.max(v, 0) / max);
+    let g = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Renda líquida mensal versus parcela">`;
+    for (let k = 0; k <= 4; k++) { const gv = max * k / 4, gy = y(gv); g += `<line x1="${L}" x2="${W - R}" y1="${gy}" y2="${gy}" stroke="#e6dcc6"/><text x="${L - 8}" y="${gy + 4}" text-anchor="end" font-size="11" fill="#777">${Math.round(gv / 1000)}k</text>`; }
+    dados.forEach((v, i) => {
+      const x = L + i * bw + bw * 0.18, w = bw * 0.64;
+      g += `<rect x="${x}" y="${y(v)}" width="${w}" height="${y(0) - y(v)}" rx="2" fill="${v >= parcela ? '#B8905A' : '#dccaa6'}"/><text x="${x + w / 2}" y="${H - 12}" text-anchor="middle" font-size="11" fill="#777">${MESES[i]}</text>`;
+    });
+    g += `<line x1="${L}" x2="${W - R}" y1="${y(parcela)}" y2="${y(parcela)}" stroke="#C25E42" stroke-width="2" stroke-dasharray="6 4"/><text x="${W - R}" y="${y(parcela) - 6}" text-anchor="end" font-size="12" font-weight="700" fill="#C25E42">1ª parcela ${brl(parcela)}</text></svg>`;
+    $('f-chart').innerHTML = g;
+  }
+
+  function aplicarLiberacao() {
+    $('lock').hidden = liberado; $('full').hidden = !liberado;
+    if (liberado) render();
+  }
+  document.querySelectorAll('.sim input').forEach(el => el.addEventListener('input', render));
+  $('f-ent').addEventListener('input', () => desenhar(lerSim(), +$('f-ent').value));
+  document.querySelectorAll('#s-ent button').forEach(b => b.addEventListener('click', () => {
+    entrada = +b.dataset.v;
+    document.querySelectorAll('#s-ent button').forEach(x => x.classList.toggle('on', x === b));
+    render();
+  }));
+
+  // ── CADASTROS (investidor e proprietário) ────────────────────
+  function enviar(d) {
+    const sim = d.simulacao ? `valor ${brl(d.simulacao.valor)}, entrada ${d.simulacao.entrada * 100}%, ${d.simulacao.anos} anos, taxa ${d.simulacao.taxa}% a.a., renda esperada ${brl(d.simulacao.renda)}/mês` : '';
+    const campos = { Tipo: d.tipo === 'investidor' ? 'Investidor (simulador)' : 'Proprietário', Nome: d.nome, WhatsApp: d.whatsapp, 'E-mail': d.email, Momento: d.perfil, Imóvel: d.imovel, Simulação: sim, Página: d.origem, Data: d.data };
+    const limpos = Object.fromEntries(Object.entries(campos).filter(([, v]) => v));
+    if (LEADS_ENDPOINT) {
+      return fetch(LEADS_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ ...limpos, _subject: 'Novo contato pelo site: ' + limpos.Tipo, _template: 'table', _captcha: 'false' }) })
+        .then(r => { if (!r.ok) throw new Error(r.status); return 'ok'; });
+    }
+    // Sem endpoint configurado: abre o e-mail já preenchido.
+    const corpo = Object.entries(limpos).map(([k, v]) => `${k}: ${v}`).join('\n');
+    location.href = `mailto:${EMAIL}?subject=${encodeURIComponent('Novo contato pelo site: ' + limpos.Tipo)}&body=${encodeURIComponent(corpo)}`;
+    return Promise.resolve('mailto');
+  }
+
+  document.querySelectorAll('.lead-form').forEach(f => f.addEventListener('submit', ev => {
+    ev.preventDefault();
+    const msg = f.querySelector('.form-msg'), fd = new FormData(f), d = Object.fromEntries(fd.entries());
+    if (d.site) return; // isca anti-robô preenchida
+    const zap = (d.whatsapp || '').replace(/\D/g, '');
+    if (!d.nome || d.nome.trim().length < 2) { msg.textContent = 'Informe o seu nome.'; return; }
+    if (zap.length < 10 || zap.length > 13) { msg.textContent = 'Informe o WhatsApp com DDD.'; return; }
+    if (f.email && !/^\S+@\S+\.\S+$/.test(d.email || '')) { msg.textContent = 'Informe um e-mail válido.'; return; }
+    if (!f.lgpd.checked) { msg.textContent = 'Marque a autorização de contato para continuar.'; return; }
+    const payload = { tipo: f.dataset.tipo, nome: d.nome.trim(), whatsapp: zap, email: d.email || '', perfil: d.perfil || '', imovel: d.imovel || '', origem: location.href, data: new Date().toISOString() };
+    if (f.dataset.tipo === 'investidor') payload.simulacao = { ...lerSim(), entrada };
+    const btn = f.querySelector('button[type=submit]'); btn.disabled = true; msg.textContent = 'Enviando...';
+    enviar(payload).then(modo => {
+      msg.textContent = modo === 'mailto' ? 'Abrimos um e-mail pronto. É só enviar.' : 'Recebemos! Em breve entramos em contato.';
+      if (f.dataset.tipo === 'investidor') { seguro(() => localStorage.setItem('ars_lead', '1')); liberado = true; aplicarLiberacao(); $('full').scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      else f.reset();
+    }).catch(() => { msg.textContent = 'Não foi possível enviar agora. Fale com a gente por ' + EMAIL + '.'; })
+      .finally(() => { btn.disabled = false; });
+  }));
+
+  aplicarLiberacao(); render();
+</script>
+</body>
+</html>
